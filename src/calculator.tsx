@@ -19,7 +19,6 @@ export default function Calculator() {
                 <InputGroup name="User longitude" id='userLongitude'></InputGroup>
                 <LocationButton></LocationButton>
                 <SubmitButton></SubmitButton>
-                <span className='text-danger' hidden id="errorMessage">the delivery distance is too long</span>
                 <Result></Result>
             </div>
         </div>

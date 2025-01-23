@@ -9,11 +9,11 @@ export default function LocationButton() {
         }
 
         function getPosition(position: any) {
-            if(lat && lon){
+            if (lat && lon) {
                 lat?.setAttribute("value", position.coords.latitude.toString());
                 lon?.setAttribute("value", position.coords.longitude.toString());
             }
-            
+
         }
     }
     return (
