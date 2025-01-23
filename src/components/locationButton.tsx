@@ -1,22 +1,24 @@
 import React from 'react';
 
-export default function locationButton() {
-    function getLocation() {
-        const lat = document.getElementById("User latitude");
-        const lon = document.getElementById("User longitude");
+export default function LocationButton() {
+    function GetLocation() {
+        const lat = document.getElementById("userLatitude");
+        const lon = document.getElementById("userLongitude");
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
+            navigator.geolocation.getCurrentPosition(getPosition);
         }
 
-
-        function showPosition(position: any) {
-            lat?.setAttribute("value", position.coords.latitude.toString())
-            lon?.setAttribute("value", position.coords.longitude.toString())
+        function getPosition(position: any) {
+            if(lat && lon){
+                lat?.setAttribute("value", position.coords.latitude.toString());
+                lon?.setAttribute("value", position.coords.longitude.toString());
+            }
+            
         }
     }
     return (
         <div>
-            <button className="btn btn-primary m-3" onClick={getLocation} type="reset">Get Location</button>
+            <button className="btn btn-primary m-3" data-test-id="getLocation" onClick={GetLocation} type="button">Get Location</button>
         </div>
     );
 };
