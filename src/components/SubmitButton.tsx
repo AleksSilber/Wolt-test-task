@@ -76,16 +76,19 @@ export default function SubmitButton() {
         if (!venueSlug || !cartValue || !userLat || !userLon) {
             document.getElementById("result")?.setAttribute("hidden", "")
             setError("Please fill in all fields.");
+            if (btn) btn.innerHTML = "Get location";
             return;
         }
         if (!parseFloat(cartValue) || !parseFloat(userLat) || !parseFloat(userLon)) {
             document.getElementById("result")?.setAttribute("hidden", "")
             setError("provide valid information");
+            if (btn) btn.innerHTML = "Get location";
             return;
         }
         const venueData = await fetchVenueData(venueSlug);
         if (!venueData) {
             setError("Failed to fetch venue data.");
+            if (btn) btn.innerHTML = "Get location";
             return;
         }
 
@@ -96,6 +99,7 @@ export default function SubmitButton() {
         const pricingData = await fetchDeliveryPricing(venueSlug);
         if (!pricingData) {
             setError("Failed to fetch delivery pricing.");
+            if (btn) btn.innerHTML = "Get location";
             return;
         }
 
