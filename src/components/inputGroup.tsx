@@ -1,33 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface InputGroupProps {
     id: string;
     name: string;
+    value: string;
+    onChange: (value: string) => void;
 }
 
-export default function InputGroup(props: InputGroupProps) {
-    const [Name, setName] = useState('');
+export default function InputGroup({ id, name, value, onChange }: InputGroupProps) {
     const [error, setError] = useState<string>("");
 
-    const validateInput = (value: string) => {
-        if (!value) {
-            return "this field is required";
+    useEffect(() => {
+        if (value) {
+            setError("");
         }
+    }, [value]);
+
+    const validateInput = (value: string) => {
+        if (!value) return "This field is required.";
         return "";
     };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setName(value);
-        setError(validateInput(value));
+        const newValue = event.target.value;
+        setError(validateInput(newValue));
+        onChange(newValue);
     };
 
-
     return (
-        <div className='input-group w-50 mb-4'>
-            <label className='fs-4 mx-3 w-75 mb-2'>{props.name}</label>
-            <input type='text' className='form-control col-4 mx-3 w-100' data-test-id={props.id} id={props.id} value={Name} onChange={handleChange} />
-            {error && <p className='text-danger mx-3'>{error}</p>}
+        <div className='input-group mb-4'>
+            <div className='fs-4 mx-2 col-12'>{name}</div>
+            <input
+                type='text'
+                className='form-control mx-2 input-volumetric rounded'
+                data-test-id={id}
+                id={id}
+                value={value}
+                onChange={handleChange}
+            />
+            {error && <p className='text-danger mx-3 mb-0 col-12'>{error}</p>}
         </div>
     );
-};
+}

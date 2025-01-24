@@ -31,14 +31,7 @@ async function fetchDeliveryPricing(venue: string) {
     }
 }
 
-function updateUI(
-    cart: number,
-    distance: number,
-    basePrice: number,
-    minOrderPrice: number,
-    distanceRanges: any[],
-    setError: (errorMsg: string) => void
-) {
+function updateUI(cart: number, distance: number, basePrice: number, minOrderPrice: number, distanceRanges: any[], setError: (errorMsg: string) => void) {
     for (const range of distanceRanges) {
         if (distance > range.min && range.max === 0) {
             document.getElementById("result")?.setAttribute("hidden", "")
@@ -51,12 +44,20 @@ function updateUI(
             const orderSurcharge = cart < minOrderPrice / 100 ? minOrderPrice - cart * 100 : 0;
             const totalPrice = cart * 100 + orderSurcharge + fee;
 
+            document.getElementById("CartValue")?.setAttribute("data-raw-value", (cart * 100).toFixed());
+            document.getElementById("deliveryFee")?.setAttribute("data-raw-value", fee.toFixed());
+            document.getElementById("deliveryDistance")?.setAttribute("data-raw-value", distance.toFixed());
+            document.getElementById("smallOrderSurcharge")?.setAttribute("data-raw-value", orderSurcharge.toFixed());
+            document.getElementById("totalPrice")?.setAttribute("data-raw-value", totalPrice.toFixed());
+
             document.getElementById("CartValue")!.textContent = cart.toFixed(2) + " €";
             document.getElementById("deliveryFee")!.textContent = (fee / 100).toFixed(2) + " €";
             document.getElementById("deliveryDistance")!.textContent = distance.toFixed(0) + " m";
             document.getElementById("smallOrderSurcharge")!.textContent = (orderSurcharge / 100).toFixed(2) + " €";
             document.getElementById("totalPrice")!.textContent = (totalPrice / 100).toFixed(2) + " €";
+
             document.getElementById("result")?.removeAttribute("hidden")
+
             return;
         }
     }
@@ -66,17 +67,22 @@ export default function SubmitButton() {
     const [error, setError] = useState<string>("");
 
     async function calculateResult() {
+        const btn = document.getElementById("calculateDeliveryPrice")as HTMLInputElement;
         const venueSlug = (document.getElementById("venueSlug") as HTMLInputElement)?.value;
         const cartValue = (document.getElementById("cartValue") as HTMLInputElement)?.value;
         const userLat = (document.getElementById("userLatitude") as HTMLInputElement)?.value;
         const userLon = (document.getElementById("userLongitude") as HTMLInputElement)?.value;
-
+        if(btn) btn.innerHTML = "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Loading..."
         if (!venueSlug || !cartValue || !userLat || !userLon) {
             document.getElementById("result")?.setAttribute("hidden", "")
             setError("Please fill in all fields.");
             return;
         }
-
+        if (!parseFloat(cartValue) || !parseFloat(userLat) || !parseFloat(userLon)) {
+            document.getElementById("result")?.setAttribute("hidden", "")
+            setError("provide valid information");
+            return;
+        }
         const venueData = await fetchVenueData(venueSlug);
         if (!venueData) {
             setError("Failed to fetch venue data.");
@@ -97,18 +103,13 @@ export default function SubmitButton() {
         const minOrderPrice = pricingData.venue_raw.delivery_specs.order_minimum_no_surcharge;
 
         updateUI(Number(cartValue), distance, basePrice, minOrderPrice, distanceRanges, setError);
+        if (btn) btn.innerHTML = "Get location";
     }
 
     return (
-        <div>
-
-            <button
-                className="btn btn-primary m-3"
-                onClick={calculateResult}
-                type="button"
-                data-test-id="calculateDeliveryPrice"
-            >
-                Calculate
+        <div className="col-6 text-end ">
+            <button className="btn btn-custom me-2 mb-2" onClick={calculateResult} type="button" data-test-id="calculateDeliveryPrice" id="calculateDeliveryPrice">
+                calculate price
             </button>
             {error && <p className="text-danger mx-2">{error}</p>}
         </div>
