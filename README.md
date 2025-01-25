@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# About the project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project is a test task for [Wolt Software Engineering internship](https://www.linkedin.com/jobs/search/?currentJobId=4124732480&distance=25.0&geoId=102974008&keywords=software%20developer%20intern&origin=HISTORY).
 
-## Available Scripts
+The project itself is a calculator that was made to calculate the price brekdown of a delivery order for the user.
 
-In the project directory, you can run:
+## Instalation and Setup
 
-### `yarn start`
+For the project to work you need to have [Node js and npm](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs) on your pc.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### How to install npm Node js 
+If you don't then you can install the Node js [here](https://nodejs.org/en).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+when the package downloaded click on it. The instalation window will be opened. Choose from given options and press 'Download'. 
 
-### `yarn test`
+### Setup the project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![The next step is to open Visual Studio Code and open the downloaded project. You can make it by pressing the button Open Folder.](helpImage1.png)
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![After opening the project open the terminal by pressing Terminal -> New terminal](helpImage2.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In the terminal you need to write this command:
 
-### `yarn eject`
+```bash
+yarn install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**NB! If you don't have yarn installed use this command:** 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install -g yarn
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Project Running
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+When all of the above was made, it is time to look at the project. To start the work you can use the command:
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Or:
+
+```bash
+yarn start
+```
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm test
+```
+ Or use:
+
+```bash
+  yarn test
+```

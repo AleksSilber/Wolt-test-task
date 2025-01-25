@@ -76,19 +76,19 @@ export default function SubmitButton() {
         if (!venueSlug || !cartValue || !userLat || !userLon) {
             document.getElementById("result")?.setAttribute("hidden", "")
             setError("Please fill in all fields.");
-            if (btn) btn.innerHTML = "Get location";
+            if (btn) btn.innerHTML = "calculate price";
             return;
         }
         if (!parseFloat(cartValue) || !parseFloat(userLat) || !parseFloat(userLon)) {
             document.getElementById("result")?.setAttribute("hidden", "")
             setError("provide valid information");
-            if (btn) btn.innerHTML = "Get location";
+            if (btn) btn.innerHTML = "calculate price";
             return;
         }
         const venueData = await fetchVenueData(venueSlug);
         if (!venueData) {
             setError("Failed to fetch venue data.");
-            if (btn) btn.innerHTML = "Get location";
+            if (btn) btn.innerHTML = "calculate price";
             return;
         }
 
@@ -99,7 +99,7 @@ export default function SubmitButton() {
         const pricingData = await fetchDeliveryPricing(venueSlug);
         if (!pricingData) {
             setError("Failed to fetch delivery pricing.");
-            if (btn) btn.innerHTML = "Get location";
+            if (btn) btn.innerHTML = "calculate price";
             return;
         }
 
@@ -107,7 +107,7 @@ export default function SubmitButton() {
         const minOrderPrice = pricingData.venue_raw.delivery_specs.order_minimum_no_surcharge;
 
         updateUI(Number(cartValue), distance, basePrice, minOrderPrice, distanceRanges, setError);
-        if (btn) btn.innerHTML = "Get location";
+        if (btn) btn.innerHTML = "calculate price";
     }
 
     return (
