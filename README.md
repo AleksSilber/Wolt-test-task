@@ -2,7 +2,7 @@
 
 The project is a test task for [Wolt Software Engineering internship](https://www.linkedin.com/jobs/search/?currentJobId=4124732480&distance=25.0&geoId=102974008&keywords=software%20developer%20intern&origin=HISTORY).
 
-The project itself is a calculator that was made to calculate the price brekdown of a delivery order for the user.
+The project itself is a calculator that was made to calculate the price breakdown of a delivery order for the user.
 
 ## Instalation and Setup
 
@@ -15,10 +15,12 @@ when the package downloaded click on it. The instalation window will be opened. 
 
 ### Setup the project
 
-![The next step is to open Visual Studio Code and open the downloaded project. You can make it by pressing the button Open Folder.](helpImage1.png)
+The next step is to open Visual Studio Code and open the downloaded project. You can make it by pressing the button Open Folder.
+![Helpful image 1](helpImage1.png)
 
 
-![After opening the project open the terminal by pressing Terminal -> New terminal](helpImage2.png)
+After opening the project open the terminal by pressing Terminal -> New terminal
+![Helpful image 1](helpImage2.png)
 
 
 In the terminal you need to write this command:
@@ -35,7 +37,7 @@ npm install -g yarn
 
 ## Project Running
 
-When all of the above was made, it is time to look at the project. To start the work you can use the command:
+If all of the criterias above were made, it is time to look at the project. To start the work you can use the command:
 
 
 ```bash
