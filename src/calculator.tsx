@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InputGroup from './components/inputGroup';
 import LocationButton from './components/locationButton';
-import SubmitButton from './components/submitButton';
+import SubmitButton from './components/SubmitButton';
 import Result from './components/Result';
 import './calculator.css';
 
