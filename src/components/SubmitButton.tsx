@@ -49,7 +49,7 @@ function updateUI(cart: number, distance: number, basePrice: number, minOrderPri
             document.getElementById("deliveryDistance")?.setAttribute("data-raw-value", distance.toFixed());
             document.getElementById("smallOrderSurcharge")?.setAttribute("data-raw-value", orderSurcharge.toFixed());
             document.getElementById("totalPrice")?.setAttribute("data-raw-value", totalPrice.toFixed());
-
+            
             document.getElementById("CartValue")!.textContent = cart.toFixed(2) + " €";
             document.getElementById("deliveryFee")!.textContent = (fee / 100).toFixed(2) + " €";
             document.getElementById("deliveryDistance")!.textContent = distance.toFixed(0) + " m";

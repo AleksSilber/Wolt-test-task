@@ -50,6 +50,25 @@ Or:
 yarn start
 ```
 
+You should be redirected to the project and if not then write [localhost:3000](localhost:3000) in the search in your browser.
+
+the page should look like this:
+
+![info image](infoImage1.png)
+
+The **Venue slug** input is for getting the location from given API. You can insert there only one of the two given locations:
+
+- home-assignment-venue-helsinki
+- home-assignment-venue-tallinn
+
+The **Cart Value** is for the value of the shopping cart in EUR. This part will only work if write there number and nothing more. For example you can take the number 10, 5.5 or 103.32;
+
+The **User latitude** and **User Longitude** are user coordinates which can be written mannualy but if you don't know your location you can always press the button **Get location.**
+
+The last component is the button **calculate price.** The button works only if all conditons are met, so before clicking the button and getting the result you need to fill all the input with data which type is also correct.
+
+After getting everything correctly and pressing the button, the price breakdown will appear for the user.
+
 ## Running Tests
 
 To run tests, run the following command
